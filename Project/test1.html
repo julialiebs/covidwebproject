@@ -1,0 +1,43 @@
+// Julia Lieberman
+// CS169 project hw1
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+
+<div id = "sandbox"></div>
+
+<script>
+      (function()
+      {
+         var arrayTest = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+        function binarySearch (arr, target, size)
+        {
+          if (arr.length <= 0) return -1;
+          var left = 0;
+          var right = size - 1;
+          while (left < right) {
+            var m = Math.floor(left + right / 2);
+            if (arr[m] < target) {
+              left = m + 1;
+            } else if (arr[m] > target) {
+              right = m - 1;
+            } else return m;
+          }
+          return -1;
+        }
+        //var an3 = "<p>";
+        var x = document.getElementById("sandbox");
+        x.innerHTML=binarySearch(arrayTest, 4, 9); //must have x.innerHTML = must be on the same line
+      }
+    )();
+
+
+  </script>
+
+</body>
+</html>

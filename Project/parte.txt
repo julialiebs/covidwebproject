@@ -1,0 +1,23 @@
+Julia Lieberman
+CS169 
+Project part 3, e: draft proposal for final phase program
+
+
+JavaScript is the most popular programming language and has been for the last 6 years straight. It is primarily used for web programming, and allows you to create incredible websites. Many website-creators like SquareSpace and Wix use JavaScript to allow their users to build websites without needing to get down and dirty with the code itself. While you can create fantastic websites with their programs, your site is limited to the services offered by the host. If you are comfortable using JavaScript, HTML5, and CSS, you can customize a website and make it do just about anything you want if you’re willing to put in the time and effort. Still, HTML and CSS can prove to be incredibly difficult, so many people choose to pay for a service to make the process easier. 
+On the other hand, starting from absolute scratch is not a good idea. It is difficult to know the ins and outs of making a full website if you have little experience, so if you do attempt to write all of the code for a web page you either need to know what you’re doing or you need to accept that it will look like a website made in the 90’s. One compromise between using a paid service like SquareSpace and starting from scratch is to use a template. Bootstrap is known for having really good free templates that serve a wide variety of website layouts, with complete documentation. 
+I plan to make a basic website, using a Bootstrap template. I have done research and started playing around with one that I like: https://startbootstrap.com/themes/creative/ 
+This comes with a basic index.html file, css stylesheet, and JavaScript code. I can edit each of these files to achieve what I want my website to look like. Some things I could try to do involve creating carousels and button functionality, automatic resizing of images for viewing, and handling of files automatically instead of having to hardcode all the filenames. This includes generating HTML divs of a custom number based on the total files contained in a directory. JavaScript really goes hand in hand with HTML and CSS so I will be learning how to use those to my advantage. The project will focus less on super particular JavaScript functionality and more on web programming as a whole as well as project development. I will be using GitHub to track my work and have already created a repository. I hope that I can use this in the future to create my own personal website--this is just the launching off point. My goal is to become comfortable editing template code and using JavaScript to make little animations and things happen. 
+        I recognize that this is a lot to take on for a small project and will likely require more than 7 hours. Hopefully I can keep it limited to 10 hours. My MVP will include the following changes and additions to the template:
+* Dynamic loading of images
+   * This is not easy to do, and may require using some PHP!
+   * I want to do this without needing to create a database
+   * Steps:
+      * Gather the names of all the files from a given folder and create a JavaScript array with them
+      * Have an HTML object (bootstrap carousel or slideshow) with a tag
+      * Insert image elements to carousel by looping through array
+      * Dynamically tag the photo elements so that they abide by the styling offered in the bootstrap CSS stylesheet
+* Customized text and photos
+* Maintenance and version control via GitHub
+
+
+This project is a very basic but extremely common use of JavaScript, and the knowledge will be highly useful going forwards if I ever intend to do web development. Note that this project will NOT be hosted on a web server, it is all locally hosted. That would bring in an extra layer of complexity that I am not yet prepared to tackle.

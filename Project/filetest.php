@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+<!-- <script type="text/javascript">
+  function oncall()
+  {
+    var dir='./../../pics';
+    var result="<?php fileNames($dir);?>";
+  }
+  </script> -->
+
+<?php
+function test(path){
+    $images = preg_grep("/\.(jpeg|jpg|png)$/", scandir(path));
+    $jsarr=json_encode($images);
+   echo "var jarray = ". $jsarr . ";\n";
+ }
+ test('./../../pics');
+  ?>
+<h1>My First Heading</h1>
+<p>My first paragraph.</p>
+
+</body>
+</html>

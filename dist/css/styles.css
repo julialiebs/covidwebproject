@@ -58,6 +58,137 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
 
+.myslideshow {
+  overflow: hidden;
+  position: relative;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  height: auto;
+  max-height: 500px;
+  margin-bottom: 0;
+  float: left;
+}
+
+.rightslider, .leftslider {
+position: absolute;
+top: 0;
+bottom: 0;
+z-index: 1;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 15%;
+color: #fff;
+text-align: center;
+opacity: 0.5;
+transition: opacity 0.15s ease;
+background-color: transparent;
+border: none;
+}
+.rightslider{ right: 0;}
+.leftslider{ left: 0;}
+
+.button-special {
+  position: relative;
+  left: 240px;
+  top: 30%
+}
+
+.button-img {
+  width: auto;
+  height: auto;
+  border: 10px solid white;
+  box-shadow: 3px 0 15px 0 gray;
+  background: url(../assets/img/portfolio/website/finalPatagucci/finalPatagucci-2.jpg);
+}
+
+
+#gallery {
+
+  img {
+    height: 75vw;
+    object-fit: cover;
+
+    @media (min-width: $bootstrap-sm) {
+      height: 35vw;
+    }
+
+    @media (min-width: $bootstrap-lg) {
+      height: 18vw;
+    }
+  }
+}
+
+.carousel-item {
+
+  img {
+    height: 60vw;
+    object-fit: cover;
+
+    @media (min-width: $bootstrap-sm) {
+      height: 350px;
+    }
+  }
+}
+
+.button-img:hover {
+  background:
+  linear-gradient(
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.45)
+    ),
+   url(../assets/img/portfolio/website/finalPatagucci/finalPatagucci-2.jpg);
+}
+
+.modalDialog {
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index:9999;
+  opacity: 0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+}
+
+.modalDialog:target {
+  opacity:1;
+  pointer-events:auto;
+}
+
+.close {
+  position: relative;
+  color: black;
+  text-decoration: none;
+  right: 0;
+  padding: 5px 8px;
+  margin: 10px;
+  border: 1px solid #fff;
+}
+
+.close:hover {
+  border: 1px solid #f2f2f2;
+}
+
+
+#slideshow {
+  position: relative;
+}
+
+.slideshow-img {
+  position: absolute;
+  left: 50%;
+  padding: 0 50px;
+}
+
 body {
   margin: 0;
   font-family: "Merriweather", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -9653,6 +9784,7 @@ button.bg-dark:focus {
 
 .text-center {
   text-align: center !important;
+  display: flex;
 }
 
 @media (min-width: 576px) {
@@ -9980,7 +10112,8 @@ hr.light {
 }
 
 .page-section {
-  padding: 8rem 0;
+  padding: 1rem 0;
+  overflow: hidden;
 }
 
 #mainNav {
@@ -10048,7 +10181,7 @@ hr.light {
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-masthead.jpg");
+  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/myportrait.JPG");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;

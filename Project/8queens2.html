@@ -1,0 +1,218 @@
+<!-- Julia Lieberman project part 2e 8-queens problem CS169
+ this took a fair bit of work but eventually i got it! I learned how to use the chrome debugger. By adding a line anywhere in my code that says just
+ debugger;
+ chrome will automatically pause there and you can debug from there, it's a great feature.
+ You will need the css sheet to run this! 
+-->
+<!DOCTYPE html>
+<html>
+<link href = "8queens.css" rel = "stylesheet"/>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<table>
+        <tr>
+            <td id="cell00" ></td>
+            <td id="cell01" ></td>
+            <td id="cell02" ></td>
+            <td id="cell03" ></td>
+            <td id="cell04" ></td>
+            <td id="cell05" ></td>
+            <td id="cell06" ></td>
+            <td id="cell07" ></td>
+        </tr>
+        <tr>
+            <td id="cell10" ></td>
+            <td id="cell11" ></td>
+            <td id="cell12" ></td>
+            <td id="cell13" ></td>
+            <td id="cell14" ></td>
+            <td id="cell15" ></td>
+            <td id="cell16" ></td>
+            <td id="cell17" ></td>
+        </tr>
+        <tr>
+            <td id="cell20" ></td>
+            <td id="cell21" ></td>
+            <td id="cell22" ></td>
+            <td id="cell23" ></td>
+            <td id="cell24" ></td>
+            <td id="cell25" ></td>
+            <td id="cell26" ></td>
+            <td id="cell27" ></td>
+        </tr>
+        <tr>
+            <td id="cell30" ></td>
+            <td id="cell31" ></td>
+            <td id="cell32" ></td>
+            <td id="cell33" ></td>
+            <td id="cell34" ></td>
+            <td id="cell35" ></td>
+            <td id="cell36" ></td>
+            <td id="cell37" ></td>
+        </tr>
+        <tr>
+            <td id="cell40" ></td>
+            <td id="cell41" ></td>
+            <td id="cell42" ></td>
+            <td id="cell43" ></td>
+            <td id="cell44" ></td>
+            <td id="cell45" ></td>
+            <td id="cell46" ></td>
+            <td id="cell47" ></td>
+        </tr>
+        <tr>
+            <td id="cell50" ></td>
+            <td id="cell51" ></td>
+            <td id="cell52" ></td>
+            <td id="cell53" ></td>
+            <td id="cell54" ></td>
+            <td id="cell55" ></td>
+            <td id="cell56" ></td>
+            <td id="cell57" ></td>
+        </tr>
+        <tr>
+            <td id="cell60" ></td>
+            <td id="cell61" ></td>
+            <td id="cell62" ></td>
+            <td id="cell63" ></td>
+            <td id="cell64" ></td>
+            <td id="cell65" ></td>
+            <td id="cell66" ></td>
+            <td id="cell67" ></td>
+        </tr>
+        <tr>
+            <td id="cell70" ></td>
+            <td id="cell71" ></td>
+            <td id="cell72" ></td>
+            <td id="cell73" ></td>
+            <td id="cell74" ></td>
+            <td id="cell75" ></td>
+            <td id="cell76" ></td>
+            <td id="cell77" ></td>
+        </tr>
+    </table>
+
+<script>
+      (function()
+      {
+        /* this function will make a 2D square array of size dimension, and fill it with zeros
+        */
+        function createBoard(dimension)
+        {
+          var array=new Array(dimension);
+          for (var i=0; i<dimension; i++)
+          {
+          	array[i]= new Array(dimension);  //put an array in each slot of the first array to make it 2D
+          }
+
+          for (var i=0; i<dimension; i++)
+          {
+          	for (var j=0; j<dimension; j++)
+            {
+            	array[i][j]=0;                 //initialize values to zero
+            }
+          }
+
+          return array;
+        }
+
+        /* this function was modified from online where I found the css code (see the css file for link). This will print out the objects from my board array
+           into the given cell id as specified in the html structure
+        */
+        function printBoard(board)
+        {
+          for (var row = 0; row < board.length; row++)
+          {
+              for (var col = 0; col < board[row].length; col++)
+              {
+                  var cell = document.getElementById("cell" + row + col);
+                  cell.innerHTML = board[row][col];
+              }
+          }
+        }
+
+        /* this function checks if a spot on the n-queens board is valid, i.e. a queen can be placed there without violating any of the rules. Returns a bool
+           row and col should go from 0 to N-1
+        */
+        function isValid(board, row, col)
+        {
+          //check row and column just to the left of where we are currently
+          for(var i=0; i<col; i++)
+          {
+            if (board[row][i]===1)
+            {
+              return false;
+          	}
+          }
+
+          for(var i=0; i<row; i++)
+          {
+            if(board[i][col]===1)
+            {
+              return false;
+          	}
+          }
+
+          //now check upper and lower left diagonals
+          var countRow=row;
+          var countCol=col;
+          while(countRow>=0 && countCol>=0)
+          {
+            if (board[countRow][countCol]===1)
+            {
+              return false;
+          	}
+            countCol--;
+            countRow--;
+          }
+          countRow=row
+          countCol=col
+          while (countRow <= 7 && countCol >=0)
+          {
+              if (board[countRow][countCol]==1)
+              {
+              	return false;
+          		}
+              countRow++;
+              countCol--;
+          }
+          return true;
+        }
+
+        /* this backtracking function will actually solve the N-Queens problem. It's set to run to 8 since that's how I have the html set up. In the future
+        it would be wise to have a global N and use that to format the html table, and to avoid using magic numbers */
+        function nQueens(board, index)
+        {
+          var n=8;
+          if(index>=n) return true;
+          for(var i=0; i<n; i++)
+          {
+            var worked=isValid(board, i, index);
+            if (worked)
+            {
+              board[i][index]=1;
+
+              if (nQueens(board, index+1))
+              {
+              	return true;
+              }
+              else board[i][index]=0;
+            }
+          }
+          return false;
+        }
+
+        var board = createBoard(8);
+        nQueens(board, 0);
+        printBoard(board);
+      }
+    )();
+
+
+  </script>
+
+</body>
+</html>

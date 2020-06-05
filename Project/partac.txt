@@ -1,0 +1,98 @@
+﻿Julia Lieberman
+Project phase 3
+CS169 COVID 2020 Spring
+
+
+        JavaScript supports object-oriented programming and inheritance. Inheritance is supported by using the prototype object. For example, we could create a class Animal:
+
+
+class Animal {
+  constructor(name) {
+    this.speed = 0;
+    this.name = name;
+  }
+  run(speed) {
+    this.speed = speed;
+    alert(`${this.name} runs with speed ${this.speed}.`);
+  }
+  stop() {
+    this.speed = 0;
+    alert(`${this.name} stands still.`);
+  }
+}
+
+
+let animal = new Animal("My animal");
+
+
+We could then create a child class using the following syntax:
+
+
+class Dog extends Animal {...}
+
+
+Objects of type Dog will have access to the methods defined in Dog and the ones defined in Animal. When a method is not found in Dog, it uses the Dog.prototype and sets it to Animal.prototype.
+
+
+let puppy = new Dog(“Charlie”); 
+puppy.run(10);
+ 
+Here we note that Dog does not have its own run method, but its prototype from extending Animal.prototype allows us to use the run method. Without a specific definition for a constructor in the Dog class, we will have an automatic “empty” constructor generated, that would look like:
+Dog(...args){ super(...args); }
+However this is a weird caveat. If we define a Dog’s constructor as:
+
+
+constructor(name, age)
+{
+        this.name=name;
+        this.age=age;
+} 
+
+
+Then we cannot call
+let puppy = new Dog(“Charlie”, 5); 
+
+
+This is because child classes must call super() before using this. So we should redefine the constructor as:
+
+
+constructor(name, age)
+{
+        super(name);
+        this.age=age;
+}
+
+
+We can also use any expression after the keyword extends so we could have a function 
+function foo(){...} 
+
+
+and then write:
+class Bar extends foo(){...}
+
+
+JavaScript does support polymorphism. This allows object oriented programming to be more streamlined, and we can use it to our advantage to use both parent and child class methods. JavaScript does not support multiple inheritance. This is because each object has a SINGLE associated prototype, so no object can inherit from more than one chain of prototypes. You can get around this in strange ways that are not clearly defined in documentation, but can be found here. 
+So this makes it seem like JavaScript is pretty similar to Java, minus the multiple inheritance, right? Wrong. While JavaScript is object-oriented, it is not a class-based language like Java and C++. It is prototype-based. Instead of having a class with instances, it just has objects that can be used as a template to get the properties for a new object. The prototype concept is what allows us to use ‘parent’ class methods, because we are making a child object that is associated as the prototype for the parent object. So in Java, classes and instances are distinct entities, whereas in JavaScript all objects can inherit from another object, this is the “prototype chain.” 
+JavaScript is similar to Java in its memory allocation and deallocation processes. In C and C++ we need to use functions like malloc() and free(). In JavaScript, values are allocated upon object creation and then automatically freed when they are done being used through garbage collection. Garbage collection is basically when you find memory that isn’t being used and releasing it, which can be accomplished through a variety of algorithms such as the Reference-counting garbage collection or the mark-and-sweep algorithm. 
+
+
+There are primitive types and then there are objects. Primitive types, such as Boolean, String, Number, null, and undefined, are passed by value in javaScript. This means that when we do the following:
+var x=10;
+var y=”hello”;
+var z = null;
+var w=a;
+
+
+When we set w to a, we are copying by value, which means that w and a both have their own memory allocated, they are not associated with each other and changing one will not change the other. 
+On the other hand, objects such as Array, Function, and Object are passed by reference. Classes are new objects that the user can create. Look at the following example:
+
+
+var myarr1=[];
+myarr1.push(5);
+var myarrCopy=myarr1;
+console.log(myarr1, myarrCopy); // outputs [5], [5]
+myarr1.push(6);
+console.log(myarr1, myarrCopy); // outputs [5, 6], [5,6]
+
+
+Here we can see that copying something of type array is done by reference: myarrCopy points to the same memory location that myarr1 does. Thus, when we change one of the two variables, the other changes as well. Similar to Java, if we use the === comparison it will only return true if the variables are referencing the same item in memory. So two objects that contain identical properties but are stored in different places in memory will return false when compared with ===.

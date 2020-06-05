@@ -1,0 +1,40 @@
+<!-- Julia Lieberman, Project part 3
+-->
+<html>
+<body>
+<script>
+   function quickSort(Arr)
+   {
+      if (Arr.length <= 1)
+      {
+        return Arr;
+      }
+      else
+      {
+        var right = [];
+        var left = [];
+        var newArr = [];
+
+        var pivot = Arr.pop();
+        for (var i = 0; i < Arr.length; i++)
+        {
+          if (Arr[i] <= pivot)
+          {
+            left.push(Arr[i]);
+          }
+          else
+          {
+            right.push(Arr[i]);
+          }
+        }
+        //Create new array with both values
+        return newArr.concat(quickSort(left), pivot, quickSort(right));                                                                           //returned untill sorting occurs
+      }
+   }
+   var testarray = [1, 6, 2, 9, 7, 5, 3, 8, 4, 0];
+   document.writeln("Before sort: " + testarray);
+   var sorted = quickSort(testarray);
+   document.writeln("After sort: " + sorted);
+</script>
+</body>
+</html>
