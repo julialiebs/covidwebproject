@@ -53,7 +53,7 @@ http://www.javascriptkit.com/javatutors/externalphp2.shtml
         </header>
         <!-- About-->
 <section id ="test">
-  <div class = "container-fluid" style="height: auto;">
+  <div class = "container-fluid" style="height: auto;" >
     <!--
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
@@ -94,6 +94,7 @@ http://www.javascriptkit.com/javatutors/externalphp2.shtml
 <div class="pull-left">Bitch werk</div>
 <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true" class="glyphicon glyphicon-remove"></span></button>
 </div>
+
 <div class="modal-body">
 
 <!--CAROUSEL CODE GOES HERE-->
@@ -263,7 +264,7 @@ var slideshow1iter=[];
 
 setupSlideshow('assets/img/portfolio/website/smallPortraits/Lucy', 'slideshow');
 slideshow1iter.push(0);
-setupSlideshow('assets/img/portfolio/website/finalpatagucci', 'slideshow2');
+setupSlideshow('assets/img/portfolio/website/finalpatagucci', 'slideshow1');
 slideshow1iter.push(0);
 
 //anonymous function!
@@ -314,15 +315,15 @@ function setupSlideshow(path, id)
       let j=0 //let yields block scoping! without saying let or any other keyword it implies var which is GLOBAL scope!
       console.log("set j to 0");
 
-
-     /*setInterval(() => //fun way to define a function in javascript
+/*
+     setInterval(() => //fun way to define a function in javascript
       {
         document.getElementById(id).setAttribute('src', jsarr[j]);  // assign new image to the element that contains `id`
         j=(j+1)%(jsarr.length-1);                                   //update j to wrap around to continue the sequential scrolling
       //  document.getElementById(id).setAttribute('src', jsarr[Math.floor(Math.random() * jsarr.length)]);  // assign new image to the element that contains `id`
     }, 2500); //rotate through array of images in slideshow every 2.5s
-    */
-    });
+*/
+  });
 }
 </script>
  
